@@ -1,0 +1,65 @@
+#!/bin/bash
+
+opts=(time_boxed
+      prioritized_tasks
+      limited_out_of_band_work
+      ) # the questions
+response=() # selections from applescript
+score=() # csv scores
+
+containsElement () {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
+}
+
+score_tally() {
+  if containsElement "$1" "${response[@]}"
+  then
+    score=( "${score[@]}" "1," )
+  else
+    score=( "${score[@]}" "0," )
+  fi
+}
+
+#applescript produces a list, I need an array
+ascript_to_array() {
+  IFS=', ' read -r -a response <<< "$ascript"
+}
+
+# order of the CSV elements = order of the opts
+# this script is dumb and I made the csv headers manually
+# if opts change, headers must be manually fixed
+build_csv () {
+  for i in "${opts[@]}"
+  do
+     :
+     score_tally "$i" "${response[@]}"
+  done
+  score=( "$(date +%a), $(date +%m)-$(date +%d), $(date +%Y)," "${score[@]}" )
+  echo "${score[@]}" >> log.csv
+}
+
+ascript=$(/usr/bin/osascript << END
+on run
+  set ASlist to the words of "${opts[@]}"
+  choose from list ASlist with prompt "what good did you do today?" with multiple selections allowed and empty selection allowed
+  if true
+    return the result as list
+    "export LIST=" & quoted form of list
+  else
+    error number -128
+  end if
+end run
+END
+)
+
+if [ "$ascript" = false ]; then
+  exit 128
+else
+  ascript_to_array
+  build_csv
+fi
+
+#TODO - ship this to google sheets
