@@ -56,9 +56,6 @@ end timeout
 end run
 END
 )
-  # echo "the pid" "$$"
-  # timeout 3 "$(kill $$)"
-  # sleep 10
 
 main () {
   if [ "$ascript" = false ]; then
