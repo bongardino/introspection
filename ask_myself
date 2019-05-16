@@ -46,7 +46,6 @@ build_csv () {
 ascript=$(/usr/bin/osascript << END
 on run
   set ASlist to the words of "${opts[@]}"
-with timeout of 5 seconds
   choose from list ASlist with prompt "what good did you do today?" with multiple selections allowed and empty selection allowed
   if true
     return the result as list
@@ -54,7 +53,6 @@ with timeout of 5 seconds
   else
     error number -128
   end if
-end timeout
 end run
 END
 )
