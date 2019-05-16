@@ -8,8 +8,7 @@ So I spent some time on this bit of bash that runs a bit of applescript that run
 run on a cron
 
 `5 16 * * * MON-FRI cd $HOME/src/introspection && gtimeout 3600 ./ask_myself`
-
-(brew install core-utils for gtimeout)  
+<sub>brew install core-utils for gtimeout</sub>
   
 ##### TODO  
 - [ ] automate shipping this to [google sheets w go](https://developers.google.com/sheets/api/quickstart/go)
