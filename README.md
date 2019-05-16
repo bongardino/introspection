@@ -6,8 +6,8 @@ Select as many (or as few) you deserve.
 ![demo](./images/in_action.png)  
   
 I am poor at remembering to spend time in consideration of how I spend my time  
-So I spent some time on this bit of bash that runs a bit of applescript that runs a bit of bash
-Now I dont have to spend time on time
+So I spent some time on this bit of bash that runs a bit of applescript that runs a bit of bash  
+Now I dont have to spend time on time  
   
   
   
