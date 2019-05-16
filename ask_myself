@@ -32,13 +32,15 @@ ascript_to_array() {
 # this script is dumb and I made the csv headers manually
 # if opts change, headers must be manually fixed
 build_csv () {
+  DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
   for i in "${opts[@]}"
   do
      :
      score_tally "$i" "${response[@]}"
   done
   score=( "$(date +%a), $(date +%m)-$(date +%d), $(date +%Y)," "${score[@]}" )
-  echo "${score[@]}" >> log.csv
+  echo "${score[@]}" >> "$DIR"/log.csv
 }
 
 ascript=$(/usr/bin/osascript << END
