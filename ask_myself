@@ -3,6 +3,7 @@
 opts=(time_boxed
       prioritized_tasks
       limited_out_of_band_work
+      had_fun
       )        # the questions - whitespace is probably fine but meh
 response=()    # selections from applescript
 score=()       # csv scores
