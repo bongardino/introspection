@@ -3,9 +3,9 @@
 opts=(time_boxed
       prioritized_tasks
       limited_out_of_band_work
-      ) # the questions
-response=() # selections from applescript
-score=() # csv scores
+      )        # the questions
+response=()    # selections from applescript
+score=()       # csv scores
 
 containsElement () {
   local e match="$1"
@@ -67,4 +67,3 @@ main () {
 }
 
 main
-#TODO - ship this to google sheets
