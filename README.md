@@ -15,7 +15,7 @@ I probably will anyway though
 ```bash
 # run on a cron
 
-5 16 * * * MON-FRI cd $HOME/src/introspection && gtimeout 3600 ./ask_myself
+0 16 * * 1-5 cd $HOME/src/introspection && /usr/local/bin/gtimeout 3600 ./ask_myself
 ```
 <sub>brew install core-utils for gtimeout</sub>
   
