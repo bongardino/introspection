@@ -45,7 +45,7 @@ build_csv () {
 }
 
 ascript=$(/usr/bin/osascript << END
-tell application "Finder"
+tell application "System Events"
   Activate
   set ASlist to the words of "${opts[@]}"
   choose from list ASlist with prompt "what good did you do today?" with multiple selections allowed and empty selection allowed
