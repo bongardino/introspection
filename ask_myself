@@ -45,7 +45,8 @@ build_csv () {
 }
 
 ascript=$(/usr/bin/osascript << END
-on run
+tell application "Finder"
+  Activate
   set ASlist to the words of "${opts[@]}"
   choose from list ASlist with prompt "what good did you do today?" with multiple selections allowed and empty selection allowed
   if true
@@ -54,7 +55,7 @@ on run
   else
     error number -128
   end if
-end run
+end tell
 END
 )
 
